@@ -4,7 +4,7 @@ Author: Marvin D. Tensuan
 '''
 
 import os
-from flask import Flask, render_template
+from flask import Flask, render_template, request, send_from_directory
 from dotenv import load_dotenv
 
 try:
@@ -52,6 +52,11 @@ def learning_sdl():
 @app.route('/my_learning_roadmap')
 def learning_roadmap():
     return render_template('my_learning_roadmap.html')
+
+@app.route('/robots.txt')
+@app.route('/sitemap.xml')
+def static_from_root():
+    return send_from_directory(app.static_folder, request.path[1:])
 
 port = int(os.environ.get('PORT', 8080))
 if __name__ == '__main__':
