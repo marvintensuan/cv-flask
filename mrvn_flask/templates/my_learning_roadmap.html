@@ -1,0 +1,187 @@
+{% extends 'base.html' %}
+{% block title %}My Learning Roadmap{% endblock %}
+{% block container %}
+    <div class="page-header" style="font-family: Ubuntu">
+        <h1 class="display-1">My Learning Roadmap</h1>
+    </div>
+
+    <section class="container">
+        <div class="accordion" id="learning-roadmap">
+            <!----2021 -->
+            <div class="card">
+              <div class="card-header" id="headingOne">
+                <h2 class="mb-0">
+                  <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseFY2021" aria-expanded="true" aria-controls="collapseOne">
+                    For Year 2021
+                  </button>
+                </h2>
+              </div>
+          
+              <div id="collapseFY2021" class="collapse show" aria-labelledby="headingOne" data-parent="#learning-roadmap">
+                <div class="card-body">
+                    <p>For this year, I have a 3-point agenda:</p>
+                    <p>
+                        <ul>
+                            <li>Demonstrate Value</li>
+                            <li>Get Into the Job Market</li>
+                            <li>Boost Productivity</li>
+                        </ul>
+                    </p>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Agenda</th>
+                                <th>Area</th>
+                                <th>Where I Am</th>
+                                <th>Where I Want to Be</th>
+                                <th>How I Want to Get There</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="col" rowspan="4">Demonstrate Value</th>
+                                <td>Languages</td>
+                                <td>
+                                    <ul>
+                                        <li>
+                                            Intermediate in Python:
+                                            <ul style="font-size: 75%;">
+                                                <li>can understand imperative and functional solutions</li>
+                                                <li>classes and dunder methods</li>
+                                                <li>can make reusable scripts.</li>
+                                            </ul>
+                                        </li>
+                                        <li>Understands differences between programming paradigms</li>
+                                        <li>Can pick-up object-oriented languages.</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li>Can implement a program in Object-Oriented and Functional Paradigms</li>
+                                        <li>Knowledgeable in Design Patterns</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li>OOP &mdash; learn Kotlin;</li>
+                                        <li>Functional &mdash; learn Scala;</li>
+                                        <li>Learn and implement design patterns.</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Frameworks and Tools</td>
+                                <td>
+                                    <ul>
+                                        <li>Can understand documentation for frameworks written in Python.</li>
+                                        <li>Has implemented Django, Jupyter Notebooks.</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    More Python frameworks and tools.
+                                </td>
+                                <td>
+                                    Learn new frameworks (e.g. Airflow, tkinter)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Deployment</td>
+                                <td>
+                                    <ul>
+                                        <li>Python venv</li>
+                                        <li>Working knowledge on Docker.</li>
+                                    </ul>
+                                </td>
+                                <td>Configure Dockerfile and YAML files more in-depth.</td>
+                                <td>
+                                    Containerize a project.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Databases</td>
+                                <td>
+                                    <ul>
+                                        <li>Has textbook knowledge of Relational Databases</li>
+                                        <li>Has implemented ORM tools (via Django and Postgresql)</li>
+                                        <li>Has implemented basic document database (Firestore Native)</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li>Understand and evaluate approriateness of each tools for the right use case.</li>
+                                        <li>Upskill SQL knowledge (e.g. indexing).</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    Finish reading Designing Data-Intensive Applications by Martin Kleppman
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="col" rowspan="3">Get Into the Job Market</th>
+                                <td>Coding Challenges</td>
+                                <td>
+                                    Has answered easy HackerRank questions.
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li>Can answer intermediate to hard questions</li>
+                                        <li>Retain common methods and solutions.</li>
+                                    </ul>
+                                </td>
+                                <td>Answer more questions.</td>
+                            </tr>
+                            <tr>
+                                <td>Data Structures and Algorithms</td>
+                                <td>
+                                    <ul>
+                                        <li>Understands Linked Lists, Stacks and Queues. Can implement from Python list.</li>
+                                        <li>Understands the concept behind binary trees.</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    Can implement breadth-first search and depth-first search algorithms.
+                                </td>
+                                <td>Conceive of a good project.</td>
+                            </tr>
+                            <tr>
+                                <td>Technical Interview Experience  </td>
+                                <td>No experience.</td>
+                                <td>Can well-handle a technical interview.</td>
+                                <td>Send out job applications.</td>
+                            </tr>
+                            <tr>
+                                <th>Boost Productivity</th>
+                                <td>IDE</td>
+                                <td>VSCode mainly for text editing.</td>
+                                <td>
+                                    <ul>
+                                        <li>Leverage all IDE features.</li>
+                                        <li>Write custom macros.</li>
+                                    </ul>
+                                </td>
+                                <td>Try Jetbrains products.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+              </div>
+            </div>
+            <!--- 2020 -->
+            <div class="card">
+                <div class="card-header" id="headingTwo">
+                  <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                      For Year 2020
+                    </button>
+                  </h2>
+                </div>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#learning-roadmap">
+                  <div class="card-body">
+                    No data available for 2020.
+                  </div>
+                </div>
+              </div>
+        </div>
+    </section>
+
+{% endblock %}
