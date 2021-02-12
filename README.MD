@@ -1,5 +1,9 @@
 # My Curriculum Vitae Website (now in Flask).
 
+This is a website created for my Curriculum Vitae.
+
+For my portfolio, see https://marvintensuan.github.io/
+
 **Related repository:** [cv-django](https://github.com/marvintensuan/cv-django)
 
 ## Overview
