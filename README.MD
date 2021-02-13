@@ -48,3 +48,5 @@ There are definitely topics which were glossed over (e.g. setting up a GCP proje
 
 2021-02-12 &mdash; deployed https://mrvn-flask-service-qmtxf7rosq-de.a.run.app/. Created repository `cv-flask`.
 
+2021-02-13 &mdash; migrated data from Cloud SQL to Firestore. See [migration script](https://github.com/marvintensuan/My-Data-Migrations/tree/master/2021-02-09%20postgresql_to_firestore).
+
