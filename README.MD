@@ -6,6 +6,8 @@ For my portfolio, see https://marvintensuan.github.io/
 
 **Related repository:** [cv-django](https://github.com/marvintensuan/cv-django)
 
+![Diagram](img/cv-flask.png)
+
 ## Overview
 
 There were many reasons why I had to create a Flask version of my `cv-django` project. First and foremost is the _cost_. Cloud SQL instances are expensive, and for an app whose sole purpose is to serve static files, I didn't think it's worth it.
