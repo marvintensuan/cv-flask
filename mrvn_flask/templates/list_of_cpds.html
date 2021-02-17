@@ -35,21 +35,16 @@ Continuing Professional Education, PICPA, Philippine Institute of Certified Publ
                     <th>Date</th>
                 </tr>
             </thead>
-
             <tbody>
-            <!--- JINJA HERE -->
-                <tr>
-                    <td> SAMPLE NAME</td>
-                    <td> SAMPLE ORGANIZER</td>
-                    <td> SAMPLE DATE</td>
-
-                    <td>SAMPLE DESCRIPTION</td>
-
-                </tr>
-            <!--- END JINJA-->
+            {% for cpd in context_cpd%}
+            <tr>
+                <td style='max-width: 480px;'>{{ cpd['name'] }}</td>
+                <td>{{ cpd['thematic'] }}</td>
+                <td>{{ cpd['units'] }}</td>
+                <td>{{ cpd['cpd_date'] }}</td>
+            </tr>
+            {% endfor %}
             </tbody>
-
         </table>
     </section>
-
 {% endblock %}
