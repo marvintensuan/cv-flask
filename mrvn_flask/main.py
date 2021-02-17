@@ -48,7 +48,7 @@ except ImportError:
 app = Flask(__name__, static_folder='static', static_url_path='/' )
 
 # Initialize DB
-db = firestore.client()
+db = firestore.Client()
 
 
 # Flask app routes
