@@ -4,6 +4,7 @@ Author: Marvin D. Tensuan
 '''
 
 import os
+from pathlib import Path
 from flask import Flask, render_template, request, send_from_directory
 from dotenv import load_dotenv
 
@@ -21,16 +22,21 @@ try:
     from google.cloud import secretmanager as sm
 
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    env_file = os.path.join(BASE_DIR,  ".env")
-    SETTINGS_NAME = "flask_app_settings"
+    env_file = os.path.join(BASE_DIR, '.env')
+    PROJECT_ID = '762981581825'
+    SETTINGS_NAME = 'flask_app_settings'
+    SECRET_VERSION = '5'
 
     if not os.path.isfile('.env'):
         _, project = google.auth.default()
 
         if project:
             client = sm.SecretManagerServiceClient()
-            path = client.secret_version_path(project, SETTINGS_NAME, "latest")
-            payload = client.access_secret_version(path).payload.data.decode("UTF-8")
+            #path = client.secret_version_path(project, SETTINGS_NAME, "latest")
+            #payload = client.access_secret_version(path).payload.data.decode("UTF-8")
+
+            name = f"projects/{PROJECT_ID}/secrets/{SETTINGS_NAME}/versions/{SECRET_VERSION}"
+            payload = client.access_secret_version(request={'name': name}).payload.data.decode("UTF-8")
 
             with open(env_file, "w") as f:
                 f.write(payload)
@@ -40,7 +46,6 @@ try:
     FIRESTORE_CPD = os.getenv('COLLECTION_NAME_CPD')
     FIRESTORE_OLC = os.getenv('COLLECTION_NAME_OLC')
     FIRESTORE_WEB = os.getenv('COLLECTION_NAME_WEB')
-
 except ImportError:
     print("Import Error raised.")
 
@@ -49,7 +54,7 @@ app = Flask(__name__, static_folder='static', static_url_path='/' )
 
 # Initialize DB
 db = firestore.Client()
-
+# TODO: GOOGLE CREDENTIALS KEY VIA STORAGE BUCKET DOES NOT WORK
 
 # Flask app routes
 @app.route('/')
@@ -74,7 +79,6 @@ def learning_roadmap():
 @app.route('/sitemap.xml')
 def static_from_root():
     return send_from_directory(app.static_folder, request.path[1:])
-
 
 # main entrypoint
 port = int(os.environ.get('PORT', 8080))

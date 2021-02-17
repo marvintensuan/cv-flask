@@ -3,5 +3,5 @@ python-dotenv
 google-auth
 google-cloud
 google-cloud-firestore
-google-cloud-secretmanager
+google-cloud-secret-manager
 gunicorn
