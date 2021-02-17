@@ -37,6 +37,9 @@ except ImportError:
 
 app = Flask(__name__, static_folder='static', static_url_path='/' )
 
+
+db = firestore.client()
+
 @app.route('/')
 def home():
     return render_template('home.html')
