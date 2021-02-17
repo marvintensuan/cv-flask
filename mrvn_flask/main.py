@@ -58,7 +58,9 @@ def home():
 
 @app.route('/list_of_cpds')
 def learning_cpd():
-    return render_template('list_of_cpds.html')
+    cpd_collection = db.collection(FIRESTORE_CPD).stream()
+    context_cpd = cpd_collection.to_dict()
+    return render_template('list_of_cpds.html', context = context_cpd)
 
 @app.route('/self_directed_learning')
 def learning_sdl():
