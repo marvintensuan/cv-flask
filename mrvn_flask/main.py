@@ -13,6 +13,10 @@ except:
     print('Cannot import google.cloud.firestore')
 
 try:
+    '''
+    Get environment variables from Google Secret Manager,
+    write them in a .env file at the container, and load at runtime.
+    '''
     import google.auth
     from google.cloud import secretmanager as sm
 
@@ -32,14 +36,22 @@ try:
                 f.write(payload)
         
     load_dotenv()
+    # DB COLLECTION NAMES
+    FIRESTORE_CPD = os.getenv('COLLECTION_NAME_CPD')
+    FIRESTORE_OLC = os.getenv('COLLECTION_NAME_OLC')
+    FIRESTORE_WEB = os.getenv('COLLECTION_NAME_WEB')
+
 except ImportError:
     print("Import Error raised.")
 
+# Initialize Flask app
 app = Flask(__name__, static_folder='static', static_url_path='/' )
 
-
+# Initialize DB
 db = firestore.client()
 
+
+# Flask app routes
 @app.route('/')
 def home():
     return render_template('home.html')
@@ -61,6 +73,8 @@ def learning_roadmap():
 def static_from_root():
     return send_from_directory(app.static_folder, request.path[1:])
 
+
+# main entrypoint
 port = int(os.environ.get('PORT', 8080))
 if __name__ == '__main__':
     app.run(threaded=True, host='0.0.0.0', port=port)
