@@ -4,6 +4,7 @@ Author: Marvin D. Tensuan
 '''
 
 import os
+from datetime import datetime
 from pathlib import Path
 from flask import Flask, render_template, request, send_from_directory
 from dotenv import load_dotenv
@@ -32,8 +33,6 @@ try:
 
         if project:
             client = sm.SecretManagerServiceClient()
-            #path = client.secret_version_path(project, SETTINGS_NAME, "latest")
-            #payload = client.access_secret_version(path).payload.data.decode("UTF-8")
 
             name = f"projects/{PROJECT_ID}/secrets/{SETTINGS_NAME}/versions/{SECRET_VERSION}"
             payload = client.access_secret_version(request={'name': name}).payload.data.decode("UTF-8")
@@ -55,7 +54,24 @@ app = Flask(__name__, static_folder='static', static_url_path='/' )
 
 # Initialize DB
 db = firestore.Client()
-# TODO: GOOGLE CREDENTIALS KEY VIA STORAGE BUCKET DOES NOT WORK
+
+# Helper
+def create_context_from_db(collection):
+    print(f'[Python]: Requested info from {collection}')
+    context = []
+    try:
+        collection_stream = db.collection(collection).stream()
+        for doc_snapshot in collection_stream:
+            doc = doc_snapshot.to_dict()
+            for key, value in doc.items():
+                if isinstance(value, datetime):
+                    doc[key] = value.strftime('%Y %b %d')
+            context.append(doc)
+    except Exception as e:
+        print(f'[Python]: Exception occured for {collection}')
+        print(e)
+    finally:
+        return context
 
 # Flask app routes
 @app.route('/')
@@ -64,20 +80,18 @@ def home():
 
 @app.route('/list_of_cpds')
 def learning_cpd():
-    cpd_collection = db.collection(FIRESTORE_CPD).stream()
-    context_cpd = []
-    try:
-        for doc_snapshot in cpd_collection:
-            doc = doc_snapshot.to_dict()
-            doc['cpd_date'] = doc['cpd_date'].strftime('%Y %b %d')
-            context_cpd.append(doc)
-    except Exception as e:
-        print(f'Exception occured: {e}')
+    context_cpd = create_context_from_db(FIRESTORE_CPD)
     return render_template('list_of_cpds.html', context_cpd = context_cpd)
 
 @app.route('/self_directed_learning')
 def learning_sdl():
-    return render_template('self_directed_learning.html')
+    olc = create_context_from_db(FIRESTORE_OLC)
+    web = create_context_from_db(FIRESTORE_WEB)
+    context_sdl = {
+        'online_courses' : olc,
+        'webinars' : web
+    }
+    return render_template('self_directed_learning.html', context_sdl = context_sdl)
 
 @app.route('/my_learning_roadmap')
 def learning_roadmap():

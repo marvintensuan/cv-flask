@@ -27,7 +27,6 @@ Continuing Professional Education, self-directed learning"
     <div class="page-header" style="margin: auto auto auto 5%;">
         <h1>Webinars</h1>
     </div>
-
     <section class="container" style="margin: auto 10% auto 5%;">
         <table class="table table-hover">
             <thead>
@@ -39,16 +38,18 @@ Continuing Professional Education, self-directed learning"
                 </tr>
             </thead>
             <tbody>
-                <!--- JINJA HERE -->
+                {% for webinar in context_sdl['webinars'] %}
                 <tr>
-                    <td> SAMPLE NAME</td>
-                    <td> SAMPLE ORGANIZER</td>
-                    <td> SAMPLE DATE</td>
-
-                    <td>SAMPLE DESCRIPTION</td>
-
+                    <td style='max-width: 240px;'>{{ webinar['webinar_name'] }}</td>
+                    <td>{{ webinar['organizer'] }}</td>
+                    <td>{{ webinar['webinar_date'] }}</td>
+                    {% if webinar['html_desc'] is None %}
+                    <td></td>
+                    {% else %}
+                    <td style='max-width: 240px;'>{{ webinar['html_desc'] | safe }}</td>
+                    {% endif %}
                 </tr>
-                <!--- END JINJA-->
+                {% endfor %}
             </tbody>
         </table>
 
@@ -69,18 +70,15 @@ Continuing Professional Education, self-directed learning"
                 </tr>
             </thead>
             <tbody>
-                <!--- JINJA HERE -->
+                {% for course in context_sdl['online_courses'] %}
                 <tr>
-                    <td> SAMPLE NAME</td>
-                    <td> SAMPLE FACULTY</td>
-                    <td> SAMPLE DATE</td>
-
-                    <td>SAMPLE LINK/td>
-
+                    <td>{{ course['course_name'] }}</td>
+                    <td>{{ course['facilitator'] }}</td>
+                    <td>{{ course['onlinecourse_date_completed'] }}</td>
+                    <td><a href="{{ course['link_to_certificate'] }}">Link to certificate.</a></td>
                 </tr>
-                <!--- END JINJA-->
+                {% endfor %}
             </tbody>
         </table>
     </section>
-
 {% endblock %}
