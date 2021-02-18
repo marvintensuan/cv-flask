@@ -7,7 +7,7 @@ GitHub: https://github.com/marvintensuan/cv-flask/
 
 import os
 from datetime import datetime
-frin operator import itemgetter
+from operator import itemgetter
 from pathlib import Path
 from flask import Flask, render_template, request, send_from_directory
 from dotenv import load_dotenv
