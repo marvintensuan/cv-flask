@@ -43,11 +43,9 @@ Continuing Professional Education, self-directed learning"
                     <td style='max-width: 240px;'>{{ webinar['webinar_name'] }}</td>
                     <td>{{ webinar['organizer'] }}</td>
                     <td>{{ webinar['webinar_date'] }}</td>
-                    {% if webinar['html_desc'] is None %}
-                    <td></td>
-                    {% else %}
-                    <td style='max-width: 240px;'>{{ webinar['html_desc'] | safe }}</td>
-                    {% endif %}
+                    <td style='max-width: 240px;'>
+                        {{ webinar['html_desc']  | safe if webinar['html_desc'] is not none else '' }}
+                    </td>
                 </tr>
                 {% endfor %}
             </tbody>
