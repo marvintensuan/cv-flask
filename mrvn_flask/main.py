@@ -7,6 +7,7 @@ GitHub: https://github.com/marvintensuan/cv-flask/
 
 import os
 from datetime import datetime
+frin operator import itemgetter
 from pathlib import Path
 from flask import Flask, render_template, request, send_from_directory
 from dotenv import load_dotenv
@@ -35,7 +36,7 @@ try:
 
             with open(env_file, "w") as f:
                 f.write(payload)  
-                     
+
     load_dotenv()
 
     # DB COLLECTION NAMES
@@ -57,13 +58,21 @@ def create_context_from_db(collection):
     print(f'[Python]: Requested info from {collection}')
     context = []
     try:
+        # Get data from Firestore
         collection_stream = db.collection(collection).stream()
-        for doc_snapshot in collection_stream:
-            doc = doc_snapshot.to_dict()
+        doc_list = [doc.to_dict() for doc in collection_stream]
+
+        # Sort data by date
+        for key in doc_list[0]:
+            if 'date' in key:
+                KEY_SORTER = key
+        context = sorted(doc_list, key=itemgetter(KEY_SORTER))
+
+        # Convert datetime to str
+        for doc in context:
             for key, value in doc.items():
                 if isinstance(value, datetime):
-                    doc[key] = value.strftime('%Y %b %d')
-            context.append(doc)
+                    doc[key] = value.strftime('%b %d, %Y')
     except Exception as e:
         print(f'[Python]: Exception occured for {collection}')
         print(e)
