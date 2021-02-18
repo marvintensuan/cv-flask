@@ -6,7 +6,7 @@ GitHub: https://github.com/marvintensuan/cv-flask/
 '''
 
 import os
-from datetime import datetime
+from datetime import datetime, timezone
 from operator import itemgetter
 from pathlib import Path
 from flask import Flask, render_template, request, send_from_directory
@@ -35,7 +35,7 @@ try:
             payload = client.access_secret_version(request={'name': name}).payload.data.decode("UTF-8")
 
             with open(env_file, "w") as f:
-                f.write(payload)  
+                f.write(payload)
 
     load_dotenv()
 
@@ -45,7 +45,7 @@ try:
     FIRESTORE_WEB = os.getenv('COLLECTION_NAME_WEB')
 except Exception as e:
     print(f'An error occured. \n{e}')
-    print(f'Failed to initialize variables.')
+    print('Failed to initialize variables.')
 
 # Initialize Flask app
 app = Flask(__name__, static_folder='static', static_url_path='/' )
@@ -62,17 +62,27 @@ def create_context_from_db(collection):
         collection_stream = db.collection(collection).stream()
         doc_list = [doc.to_dict() for doc in collection_stream]
 
-        # Sort data by date
+        # Get 'date' key
         for key in doc_list[0]:
             if 'date' in key:
                 KEY_SORTER = key
-        context = sorted(doc_list, key=itemgetter(KEY_SORTER))
 
-        # Convert datetime to str
+        # Assign temporary datetime values to None
+        TEMP = datetime(1969, 7, 21, 20, 17, tzinfo=timezone.utc)
+        for doc in doc_list:
+            if doc[KEY_SORTER] is None:
+                doc[KEY_SORTER] = TEMP
+
+        # Sort values by date
+        context = sorted(doc_list, key=itemgetter(KEY_SORTER), reverse=True)
+
+        # Convert date values to str
         for doc in context:
-            for key, value in doc.items():
-                if isinstance(value, datetime):
-                    doc[key] = value.strftime('%b %d, %Y')
+            if doc[KEY_SORTER] == TEMP:
+                doc[KEY_SORTER] = ''
+            else:
+                doc[KEY_SORTER] = doc[KEY_SORTER].strftime('%B %d, %Y')
+
     except Exception as e:
         print(f'[Python]: Exception occured for {collection}')
         print(e)
