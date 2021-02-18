@@ -47,9 +47,6 @@ try:
     FIRESTORE_OLC = os.getenv('COLLECTION_NAME_OLC')
     FIRESTORE_WEB = os.getenv('COLLECTION_NAME_WEB')
 
-    # GOOGLE_APPLICATION_CREDENTIALS
-    GOOG = Path(os.getenv('GOOGLE_APPLICATION_CREDENTIALS'))
-    print(f'[Python] Service account file: {GOOG.exists()}')
 except ImportError:
     print("Import Error raised.")
 
@@ -68,8 +65,15 @@ def home():
 @app.route('/list_of_cpds')
 def learning_cpd():
     cpd_collection = db.collection(FIRESTORE_CPD).stream()
-    context_cpd = [doc.to_dict() for doc in cpd_collection]
-    return render_template('list_of_cpds.html', context = context_cpd)
+    context_cpd = []
+    try:
+        for doc_snapshot in cpd_collection:
+            doc = doc_snapshot.to_dict()
+            doc['cpd_date'] = doc['cpd_date'].strftime('%Y %b %d')
+            context_cpd.append(doc)
+    except Exception as e:
+        print(f'Exception occured: {e}')
+    return render_template('list_of_cpds.html', context_cpd = context_cpd)
 
 @app.route('/self_directed_learning')
 def learning_sdl():
