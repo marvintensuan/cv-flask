@@ -1,6 +1,8 @@
 '''
-My Flask App
+My Curriculum Vitae Flask App
 Author: Marvin D. Tensuan
+
+GitHub: https://github.com/marvintensuan/cv-flask/
 '''
 
 import os
