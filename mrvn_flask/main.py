@@ -25,7 +25,7 @@ try:
     env_file = os.path.join(BASE_DIR, '.env')
     PROJECT_ID = '762981581825'
     SETTINGS_NAME = 'flask_app_settings'
-    SECRET_VERSION = '5'
+    SECRET_VERSION = '6'
 
     if not os.path.isfile('.env'):
         _, project = google.auth.default()
@@ -46,6 +46,10 @@ try:
     FIRESTORE_CPD = os.getenv('COLLECTION_NAME_CPD')
     FIRESTORE_OLC = os.getenv('COLLECTION_NAME_OLC')
     FIRESTORE_WEB = os.getenv('COLLECTION_NAME_WEB')
+
+    # GOOGLE_APPLICATION_CREDENTIALS
+    GOOG = Path(os.getenv('GOOGLE_APPLICATION_CREDENTIALS'))
+    print(f'[Python] Service account file: {GOOG.exists()}')
 except ImportError:
     print("Import Error raised.")
 
