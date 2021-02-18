@@ -11,19 +11,13 @@ from pathlib import Path
 from flask import Flask, render_template, request, send_from_directory
 from dotenv import load_dotenv
 
-try:
-    from google.cloud import firestore
-except:
-    print('Cannot import google.cloud.firestore')
+from google.cloud import firestore
+import google.auth
+from google.cloud import secretmanager as sm
 
 try:
-    '''
-    Get environment variables from Google Secret Manager,
-    write them in a .env file at the container, and load at runtime.
-    '''
-    import google.auth
-    from google.cloud import secretmanager as sm
-
+    # Get environment variables from Google Secret Manager,
+    # write them in a .env file at the container, and load at runtime.
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     env_file = os.path.join(BASE_DIR, '.env')
     PROJECT_ID = '762981581825'
@@ -40,16 +34,17 @@ try:
             payload = client.access_secret_version(request={'name': name}).payload.data.decode("UTF-8")
 
             with open(env_file, "w") as f:
-                f.write(payload)
-        
+                f.write(payload)  
+                     
     load_dotenv()
+
     # DB COLLECTION NAMES
     FIRESTORE_CPD = os.getenv('COLLECTION_NAME_CPD')
     FIRESTORE_OLC = os.getenv('COLLECTION_NAME_OLC')
     FIRESTORE_WEB = os.getenv('COLLECTION_NAME_WEB')
-
-except ImportError:
-    print("Import Error raised.")
+except Exception as e:
+    print(f'An error occured. \n{e}')
+    print(f'Failed to initialize variables.')
 
 # Initialize Flask app
 app = Flask(__name__, static_folder='static', static_url_path='/' )
