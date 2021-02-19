@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-<loc>https://mrvn-flask-service-qmtxf7rosq-de.a.run.app/</loc>
+<loc>https://www.marvintensuan.com/</loc>
 <changefreq>monthly</changefreq>
 </url>
 <url>
-<loc>https://mrvn-flask-service-qmtxf7rosq-de.a.run.app/list_of_cpds</loc>
+<loc>https://www.marvintensuan.com/list_of_cpds</loc>
 <changefreq>weekly</changefreq>
 </url>
 <url>
-<loc>https://mrvn-flask-service-qmtxf7rosq-de.a.run.app/self_directed_learning</loc>
+<loc>https://www.marvintensuan.com/self_directed_learning</loc>
 <changefreq>weekly</changefreq>
 </url>
 <url>
-<loc>https://mrvn-flask-service-qmtxf7rosq-de.a.run.app/my_learning_roadmap</loc>
-<changefreq>weekly</changefreq>
+<loc>https://www.marvintensuan.com//my_learning_roadmap</loc>
+<changefreq>monthly</changefreq>
 </url>
 </urlset>
