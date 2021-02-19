@@ -2,3 +2,4 @@ User-Agent: *
 Disallow:
 
 # Sitemap
+Sitemap: https://www.marvintensuan.com/sitemap.xml
