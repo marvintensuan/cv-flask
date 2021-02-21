@@ -30,11 +30,11 @@ Required dependencies include:
 
 - Firestore database should be in the same project as where you deployed the Flask app, for convenience.
 - Create a service account using [this guide](https://cloud.google.com/firestore/docs/quickstart-servers). This will grant your Flask app with the configured access to the Firestore database. After this, you should be able to download a JSON file.
-- Create a new bucket on Cloud Storage. In this bucket, upload the JSON file. Once done, click the file to see the object details. Look for the "Authenticated URL" and add it to Secrets Manager as `GOOGLE_APPLICATION_CREDENTIALS`.
+- Store the JSON file in a directory inside the project. Add the location of this file to your environment variables (e.g. `GOOGLE_APPLICATION_CREDENTIALS="app/path/to/file.json"`) 
 
 ### Secrets Manager
 
-- Secrets Manager contains your environment variable, which will be conterted by `main.py` into a .env at runtime. These variables include `PORT`, `SECRET_KEY`, `DEBUG` and of course, `GOOGLE_APPLICATION_CREDENTIALS`. 
+- Secrets Manager contains your environment variable, which will be converted by `main.py` into a .env at runtime. These variables include `PORT`, `SECRET_KEY`, `DEBUG` and `GOOGLE_APPLICATION_CREDENTIALS`. 
 
 ### Others
 
@@ -48,3 +48,6 @@ There are definitely topics which were glossed over (e.g. setting up a GCP proje
 
 2021-02-13 &mdash; migrated data from Cloud SQL to Firestore. See [migration script](https://github.com/marvintensuan/My-Data-Migrations/tree/master/2021-02-09%20postgresql_to_firestore).
 
+2021-02-17 &mdash; added Jinja templating to pages.
+
+2021-02-18 &mdash; routed domain marvintensuan.com to the deployed app. Project for [cv-django](https://github.com/marvintensuan/cv-django) was shutdown.
