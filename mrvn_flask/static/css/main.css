@@ -1,0 +1,30 @@
+:root {
+  --background-color-base: rgb(62, 48, 54);
+  --color-primary: #42b883;
+  --text: rgb(255, 246, 230);
+  --text-hover: rgb(33, 53, 71);
+}
+
+body {
+  margin: 0;
+  background-color: var(--background-color-base);
+  font-family: "IBM Plex Mono";
+  color: var(--text);
+}
+
+header {
+  text-align: left !important;
+  background-color: var(--text-hover);
+}
+
+.banner-like {
+  margin: auto auto;
+  padding: 30px;
+}
+
+.container {
+  margin: 0 auto;
+  display: block;
+  max-width: 800px;
+  text-align: center;
+}

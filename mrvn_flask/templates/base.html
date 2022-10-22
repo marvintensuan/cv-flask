@@ -7,6 +7,15 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
+    <!-- Stylesheets -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/main.css') }}" />
+    {% block custom_style %}{% endblock %}
 
     <!--- My meta tags -->
     <meta name="author" content="Marvin Tensuan" />
@@ -17,9 +26,7 @@
   </head>
   <body>
     <header></header>
-
     {% block container %}{% endblock %}
-
     <footer></footer>
   </body>
 </html>
