@@ -1,172 +1,41 @@
 {% extends 'base.html' %}
-{% block meta_desc %}"Curriculum Vitae website for Marvin D. Tensuan. Hosted via Flask on Google Cloud Run.
-Marvin is an accountant with a wide arsenal of tech stack, including Python and Google Cloud."
+{% block custom_style %}
+<style>
+  p.options {
+      border: 1px dashed;
+      padding: 10px;
+      max-width: 75%;
+      align-self: center;
+      margin: 15px auto;
+  }
+
+  p.options:hover {
+      background-color: var(--color-primary);
+      color: var(--text-hover);
+  }
+</style>
 {% endblock %}
-{% block meta_keywords %}"Marvin Tensuan, python developer, curriculum vitae, accountant"{% endblock %}
-{% block title %}Curriculum Vitae{% endblock %}
+{% block meta_desc %}"Marvin Tensuan's Portfolio Website"{% endblock %}
+{% block meta_keywords %}"Marvin Tensuan, python developer, accountant, portfolio"{% endblock %}
+{% block title %}Marvin Tensuan{% endblock %}
 {% block container %}
-	<script>
-		$(".nav-link").eq(0).addClass("active")
-	</script>
-	<!--- Title and Social Media Links -->
-	<div class="container" style="text-align: center;">
-		<p style="font-size: 3em; font-weight: bold; margin: 1em auto auto auto;">Marvin D. Tensuan</p>
-		<p style="font-size: 2em;">Curriculum Vitae</p>
-		<nav class="btn-group btn-group-justified btn-group" role="group" 
-            style="max-width: 20%; min-width: 256px; margin: auto; background-color: green;">
-                <button type="button" class="btn btn-secondary">
-                    <a class="btn btn-default" role="button" href="https://www.linkedin.com/in/marvintensuan">
-                        <img src="https://www.republiccapitalaccess.com/wp-content/uploads/2014/07/linkedin-icon.png" height="25px">
-                    </a>
-                </button>
-                <button type="button" class="btn btn-secondary">
-                    <a class="btn btn-default" role="button" href="mailto:marvintensuan@outlook.com">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Microsoft_Office_Outlook_(2018%E2%80%93present).svg/1200px-Microsoft_Office_Outlook_(2018%E2%80%93present).svg.png" height="25px">
-                    </a>
-                </button>
-                <button type="button" class="btn btn-secondary">
-                    <a class="btn btn-default" role="button" href="https://github.com/marvintensuan">
-                        <img src="https://digitallabs.mmu.ac.uk/wp-content/uploads/2018/04/github_logo.png" height="25px">
-                    </a>
-                </button>		
-		</nav>	
-	</div>
-	<!--- Work Experience-->
-	<div class="container mt-5">
-		<section class="row">
-			<div class="col-md-5 contents-label">Work Experience</div>
-			<div class="col-md-7">
-				<h3 style="font-weight: bold;">Citibank ROHQ</h3>
-				<h4 style="font-weight: bold;">Product Control Officer (September 2021 to <span><i>present</i></span>)</h4>
-				<p>Balance Sheet Cluster – tasked with monitoring and sign-off daily movements of Balance Sheet items from across the APAC region for different business under Citibank’s Rates and Currencies business. Product portfolio is mostly comprised of government bonds and reverse repos.</p>
-				<div></div>
-				<h3 style="font-weight: bold;">Deutsche Knowledge Services Pte. Ltd.</h3>
-				<p>
-					The FX Management team is mandated to hedge cost-related foreign currency transactions incurred from major Deutsche Bank branches across US, UK, and APAC.
-					Responsible for validation of accruals, invoices, and settlement and clearing bookings; and booking of journal entries on SAP to recognize hedged items.
-				</p>
-				<h4 style="font-weight: bold;">Financial Analyst | FX Management (June 2018 to September 2020)</h4>
-				<p>        
-					<ul>
-						<li>Subject matter expert on the SAP MCA process.</li>
-						<li>Preparation of Management Information reports for presentation to internal stakeholders, as well as providing root cause analysis for FX P&L performance.</li>
-						<li>Conducted trainings on the proper booking procedures for foreign currency transactions and hedging.</li>
-						<li>Process improvements through Excel VBA automations</li>
-						<li>Cross-team process improvements through lean principles</li>
-						<li>Update KOPs to reflect changes in processes.</li>
-						<li>1x Employee of the Month, April 2020</li>
-						<li>2x Spot Awardee (September 2018 and 2019)</li>
-						<li>1x Gold Medalist, Continuous Improvement Award</li>
-					</ul>         
-				</p>
-				<h4 style="font-weight: bold;">Senior Financial Analyst | Central FX Team (October 2020 to <em>present</em>)</h4>
-				<ul>
-					<li>Assist in the creation of a centralized FX Team which aims to cover global operations, including revenue products and newer regions</li>
-					<li>
-						Member of Automation Exchange Working Group &mdash; an internal working group dealing with in-house consulting for small-scale automation projects
-						<ul>
-							<li>Schedule Trial Balance downloads using the SAP Analysis for Office API for VBA. Front end via ActiveX Controls.</li>
-						</ul>
-					</li>
-					<li>
-						Introduced Python-based solutions for ad-hoc data analyses including:
-						<ul>
-							<li>Jupyter Notebook for miscellaneous processes like monitoring of day-to-day movements of ledger balances.</li>
-							<li>Conversion of SAP GUI automation scripts (VBScript) to Python via the pywin32 module for easier integration with data-analysis related scripts that utilize pandas.</li>
-						</ul>
-					</li>
-					<li>Dashboards for monitoring product performance.</li>
-					<li>Employee of the Month, June 2021</li>
-				</ul>
-			</div>
-		</section>
-	</div>
-	
-	<!--- Professional Certifications-->
-	<div class="container mt-5">
-		<section class="row mb-5">
-			<div class="col-md-5 contents-label"> Certifications</div>
-			<div class="col-md-7">
-				<!---Licenses-->
-				<h3>Professional Licenses</h3>
-				<ul>
-					<li>
-						<p style="line-height: 50%; font-weight: bold;">Certified Public Accountant</p>
-						<p>Philippine Regulatory Board of Accountancy (May 2018 &ndash; <em>present</em>)</p>
-					</li>
-				</ul>
-				
-				<!---Memberships-->
-				<h3>Memberships</h3>
-				<ul>
-					<li>
-						<p>Philippine Institute of Certified Public Accountants, Member in Good Standing.</p>
-						<p>Python Software Foundation, Basic Member</p>
-					</li>
-				</ul>
-			</div>
-	</div>
-	</section>
-	<!--- Training and Development-->
-	<div class="container">
-		<section class="row">
-			<div class="col-md-5 contents-label">Training and Development</div>
-			<div class="col-md-7">
-				<a href="https://marvintensuan.github.io">
-					<button type="button" class="btn btn-secondary btn-block text-decoration-none mb-5">
-						Link to Portfolio (GitHub Pages)
-					</button>
-				</a>
-				<a href="https://www.marvintensuan.com/list_of_cpds">
-					<button type="button" class="btn btn-secondary btn-block text-decoration-none mb-5">
-						Continuous Professional Education
-					</button>
-				</a>
-				<a href="https://www.marvintensuan.com/list_of_cpds">
-					<button type="button" class="btn btn-secondary btn-block text-decoration-none mb-5">
-						Self-Directed Learning
-					</button>
-				</a>
-			</div>
-		</section>
-	</div>
-	<!--- Academic Background-->
-	<div class="container">
-		<section class="row">
-			<div class="col-md-5 contents-label">Academic Background</div>
-			<div class="col-md-7">
-				<!--- Graduate: empty :( -->
-				<!---Tertiary-->
-				<p><h3>Bachelor of Science in Accountancy</h3></p>
-				<p>Polytechnic University of the Philippines (June 2013 to October 2017)</p>
-				<p>Extra and co-curricular activities:</p>
-				<ul>
-					<li>PWC M&A Challenge (2017)</li>
-					<li>UP JPIA APEX Challenge (2017)</li>
-					<li>NFJPIA-NCR 9th Annual Grand Summit (2016)</li>
-					<li>SYNTHESIS (2016)</li>
-					<li>COL-JAPI Stock Market Challenge (2015)</li>
-					<li>Student Representative (2014)</li>
-					<li>PUP JPIA Mathematics Competition (2013)</li>
-				</ul>
-				<!---Secondary-->
-				<p><h3>Muntinlupa Science High School</h3></p>
-				<p>(June 2009 to March 2013)</p>
-				<ul>
-					<li>Editor-in-Chief, Ang Matyag</li>
-					<li>Finalist, Philippine Robotics Olympiad 2012</li>
-					<li>Champion, 9th UP-ERG Dagitab Competition</li>
-					<li>Outdoorsman, Boy Scouts of the Philippines</li>
-				</ul>
-				<!---Primary-->
-				<p><h3>Itaas Elementary School</h3></p>
-				<p>(June 2003 to March 2009)</p>
-				<ul>
-					<li>8<sup>th</sup> honorable mention</li>
-					<li>Science News Editor, Rootlets</li>
-					<li>Patrol Leader, Boy Scouts of the Philippines</li>
-				</ul>   
-			</div>
-		</section>
-	</div>
+  <div id="app" class="container">
+    <h1 class="title">Hi! I'm Marvin. :)</h1>
+    <p>Financial Analyst. Python Dev.</p>
+    <p>This site is WIP :(</p>
+    <p class="options">LinkedIn</p>
+    <p class="options">Dev.to</p>
+    <p class="options">Twitter</p>
+    <p class="options">GitHub Profile</p>
+    <p class="options">GitHub Pages</p>
+    <p class="options">Substack (coming soon)</p>
+
+    <p>Python 🐍 is the core of my tech stack.</p>
+    <p>
+      I do data analysis and visualizations. I also deal with data modeling
+      and dashboarding with other proprietary software. I'm also no stranger
+      with web technologies for both server-side and client-side.
+    </p>
+    <br />
+  </div>
 {% endblock %}
