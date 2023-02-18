@@ -1,6 +1,20 @@
 {% extends 'base.html' %}
 {% block custom_style %}
 <style>
+  .blinking-cursor {
+    animation: blink 1s step-end infinite
+  }
+
+  @keyframes blink {
+    from, to {
+      color: transparent;
+    }
+
+    50% {
+      color: var(--text);
+    }
+  }
+
   p.options {
       border: 1px dashed;
       padding: 10px;
@@ -13,6 +27,15 @@
       background-color: var(--color-primary);
       color: var(--text-hover);
   }
+  .options > a {
+    text-decoration: none;
+    color: var(--text);
+  }
+
+  .options > a:hover {
+    color: var(--text-hover);
+  }
+
 </style>
 {% endblock %}
 {% block meta_desc %}"Marvin Tensuan's Portfolio Website"{% endblock %}
@@ -20,17 +43,16 @@
 {% block title %}Marvin Tensuan{% endblock %}
 {% block container %}
   <div id="app" class="container">
-    <h1 class="title">Hi! I'm Marvin. :)</h1>
-    <p>Financial Analyst. Python Dev.</p>
-    <p>This site is WIP :(</p>
-    <p class="options">LinkedIn</p>
-    <p class="options">Dev.to</p>
-    <p class="options">Twitter</p>
-    <p class="options">GitHub Profile</p>
-    <p class="options">GitHub Pages</p>
-    <p class="options">Substack (coming soon)</p>
+    <h1 class="title">Hi! I'm Marvin.</h1>
+    <p>Financial Analyst. Python Dev. Welcome to my landing page...<span class="blinking-cursor">|</span></p>
+    <p class="options"><a href="https://www.linkedin.com/in/marvintensuan/">LinkedIn</a></p>
+    <p class="options"><a href="https://github.com/marvintensuan">GitHub Profile</a></p>
+    <p class="options"><a href="https://marvintensuan.github.io/">GitHub Pages</a></p>
+    <p class="options"><a href="https://twitter.com/marvintensuan">Twitter</a></p>
+    <p class="options"><a href="https://dev.to/marvintensuan">Dev.to</a></p>
+    <p class="options"><a href="#">Substack (coming soon)</a></p>
 
-    <p>Python 🐍 is the core of my tech stack.</p>
+    <p>Python is the core of my tech stack.</p>
     <p>
       I do data analysis and visualizations. I also deal with data modeling
       and dashboarding with other proprietary software. I'm also no stranger
