@@ -15,6 +15,10 @@ app = Flask(__name__, static_folder='static', static_url_path='/' )
 def home():
     return render_template('home.html')
 
+@app.route('/lifegoals')
+def life_goals():
+    return render_template('lifegoals.html')
+
 @app.route('/robots.txt')
 @app.route('/sitemap.xml')
 def static_from_root():
