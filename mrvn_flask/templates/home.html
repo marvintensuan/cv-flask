@@ -2,43 +2,43 @@
 {% block meta_desc %}"Marvin Tensuan's Portfolio Website"{% endblock %}
 {% block meta_keywords %}"Marvin Tensuan, python developer, accountant, portfolio"{% endblock %}
 {% block custom_style %}
-<style>
-  .blinking-cursor {
-    animation: blink 1s step-end infinite
-  }
-
-  @keyframes blink {
-    from, to {
-      color: transparent;
+  <style>
+    .blinking-cursor {
+      animation: blink 1s step-end infinite
     }
 
-    50% {
+    @keyframes blink {
+      from, to {
+        color: transparent;
+      }
+
+      50% {
+        color: var(--text);
+      }
+    }
+
+    p.options {
+        border: 1px dashed;
+        padding: 10px;
+        max-width: 75%;
+        align-self: center;
+        margin: 15px auto;
+    }
+
+    p.options:hover {
+        background-color: var(--color-primary);
+        color: var(--text-hover);
+    }
+    .options > a {
+      text-decoration: none;
       color: var(--text);
     }
-  }
 
-  p.options {
-      border: 1px dashed;
-      padding: 10px;
-      max-width: 75%;
-      align-self: center;
-      margin: 15px auto;
-  }
-
-  p.options:hover {
-      background-color: var(--color-primary);
+    .options > a:hover {
       color: var(--text-hover);
-  }
-  .options > a {
-    text-decoration: none;
-    color: var(--text);
-  }
+    }
 
-  .options > a:hover {
-    color: var(--text-hover);
-  }
-
-</style>
+  </style>
 {% endblock %}
 {% block title %}Marvin Tensuan{% endblock %}
 {% block container %}
