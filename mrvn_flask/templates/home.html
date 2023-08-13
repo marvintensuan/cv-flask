@@ -1,12 +1,14 @@
 {% extends 'base.html' %}
 {% block meta_desc %}"Marvin Tensuan's Portfolio Website"{% endblock %}
 {% block meta_keywords %}"Marvin Tensuan, python developer, accountant, portfolio"{% endblock %}
+{% block custom_meta %}
   <meta property="og:title" content="Marvin Tensuan" />
   <meta property="og:description" content="Marvin Tensuan's Portfolio Website" />
   <meta property="og:url" content="https://www.marvintensuan.com/" />
   <meta property="og:locale" content="en_PH" />
   <meta property="twitter:title" content="Marvin Tensuan" />
   <meta property="twitter:description" content="Marvin Tensuan's Portfolio Website" />
+{% endblock %}
 {% block custom_style %}
   <style>
     .blinking-cursor {
