@@ -19,6 +19,10 @@ def home():
 def life_goals():
     return render_template('lifegoals.html')
 
+@app.route('/intro')
+def introductions():
+    return render_template('introductions.html')
+
 @app.route('/robots.txt')
 @app.route('/sitemap.xml')
 def static_from_root():
